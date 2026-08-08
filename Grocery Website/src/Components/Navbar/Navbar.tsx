@@ -6,7 +6,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 
 const Navbar = () => {
-  const [showMenu,setShowMenu] = useState(false)
+  const [showMenu,setShowMenu] = useState<Boolean>(false)
 
   const onClickHandler = ()=>{
     setShowMenu(!showMenu)
