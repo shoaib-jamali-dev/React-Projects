@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { FaHeart } from "react-icons/fa6";
 import { RiShoppingBag4Fill } from "react-icons/ri";
 import { FaSearch } from "react-icons/fa";
@@ -7,12 +7,21 @@ import { IoClose } from "react-icons/io5";
 
 const Navbar = () => {
   const [showMenu,setShowMenu] = useState<Boolean>(false)
+  const [isScroll, setIsScroll] = useState<Boolean>(false)
 
   const onClickHandler = ()=>{
     setShowMenu(!showMenu)
   }
+
+   useEffect(()=>{
+    const  handleScroll = ()=>{
+      setIsScroll(window.scrollY > 10)
+    }
+
+    window.addEventListener("scroll",handleScroll)
+   },[])
   return (
-    <header className='bg-white fixed right-0 left-0 top-0'>
+    <header className={`bg-white fixed right-0 left-0 top-0 z-10 ${isScroll ? "shadow-md":""} `}>
       <nav className=' max-w-350 mx-auto px-10 flex h-[12vh] lg:h-[14vh] items-center justify-between'>
         <a href="#" className='text-3xl font-bold '>Gr<span className='text-orange-500 uppercase'>o</span>cify</a>
 
